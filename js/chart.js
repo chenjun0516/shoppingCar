@@ -24,7 +24,9 @@ var vm=new Vue({
 		totalCount () {
 			let itemTotal = 0;
 			this.productList.forEach((value) => {
-				itemTotal += value.productPrice * value.productQuentity;
+				if (value.checked) {
+					itemTotal += value.productPrice * value.productQuentity;
+				}
 			})
 			return itemTotal
 		}
