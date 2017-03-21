@@ -5,7 +5,9 @@ var vm=new Vue({
 		return {
 			totalMoney:0,
 			checkAllflag: false,
-			productList:[]
+			productList:[],
+			delFlag: false,
+			curIndex: ''
 		}
 	},
 	filters:{
@@ -72,6 +74,15 @@ var vm=new Vue({
 				item.productQuentity = 0
 				console.log('delete')
 			}
+		},
+		delConfirm (item) {
+			this.delFlag = true;
+			this.curIndex = item
+		},
+		delProduct () {
+			this.delFlag = false;
+			var index = this.productList.indexOf(this.curIndex);
+			this.productList.splice(index, 1)
 		}
 	}
 })
